@@ -10,6 +10,8 @@ sources:
             tests:
               - unique
               - not_null
+          - name: status
+            tests:
               - accepted_values:
                   values:
                     - "Operating"
