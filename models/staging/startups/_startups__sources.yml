@@ -5,6 +5,7 @@ sources:
     database: raw
     tables:
       - name: companies
+        description: raw data for some startup companies
         columns:
           - name: company
             tests:
@@ -18,6 +19,7 @@ sources:
                     - "Exited"
                     - "Dead"
       - name: founders
+        description: raw data for some founders of startup companies
         columns:
           - name: founder
             tests:
