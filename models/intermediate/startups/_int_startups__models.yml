@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: int_companies
+    columns:
+    - name: company
+      tests:
+        - unique
+        - not_null
+    - name: status
+      tests:
+        - accepted_values:
+            values:
+              - "Operating"
+              - "Exited"
+              - "Dead"
+  - name: int_founders
+    columns:
+      - name: founder
+        tests:
+          - not_null
+      - name: company
+        tests:
+          - not_null
+          - relationships:
+              field: company
+              to: ref('int_companies')
+  - name: int_investments
+    columns:
+      - name: company
+        tests:
+          - not_null
+          - relationships:
+              field: company
+              to: ref('int_companies')
+  - name: int_investors
+    columns:
+      - name: company
+        tests:
+          - not_null
+          - relationships:
+              field: company
+              to: ref('int_companies')
