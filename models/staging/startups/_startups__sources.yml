@@ -8,12 +8,18 @@ sources:
         columns:
           - name: company
             tests:
-              - dbt_utils.not_null_proportion:
-                  at_least: 0.85
-      - name: orders
-        columns:
-          - name: order_id
-            tests:
               - unique
               - not_null
-              - test_generic_not_null
+              - accepted_values:
+                  values:
+                    - "Operating"
+                    - "Exited"
+                    - "Dead"
+      - name: founders
+        columns:
+          - name: founder
+            tests:
+              - not_null
+          - name: company
+            tests:
+              - not_null
