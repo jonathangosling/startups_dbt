@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: startups
+    database: raw
+    tables:
+      - name: companies
+        columns:
+          - name: company
+            tests:
+              - dbt_utils.not_null_proportion:
+                  at_least: 0.85
+      - name: orders
+        columns:
+          - name: order_id
+            tests:
+              - unique
+              - not_null
+              - test_generic_not_null
